@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import Router from 'next/router';
 import {wrapper} from '../store';
+import { IntlProvider } from 'react-intl';
+import { useRouter } from "next/router"
 
 // types
 import type { AppProps } from 'next/app';
@@ -22,10 +24,18 @@ if(isProduction) {
   Router.events.on('routeChangeComplete', (url: string) => gtag.pageview(url));
 }
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
-  <Fragment>
-    <Component {...pageProps} />
+const languages = {
+  vi: require('../public/locales/vi.json'),
+  en: require('../public/locales/en.json'),
+};
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  const { locale, defaultLocale } = useRouter();
+  return <Fragment>
+    <IntlProvider messages={languages[locale]} locale={locale} defaultLocale={defaultLocale}>
+      <Component {...pageProps} />
+    </IntlProvider>
   </Fragment>
-);
+};
 
 export default wrapper.withRedux(MyApp);
