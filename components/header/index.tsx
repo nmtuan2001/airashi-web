@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
 import useOnClickOutside from 'use-onclickoutside';
 import Logo from '../../assets/icons/logo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { RootState } from 'store';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 type HeaderType = {
   isErrorPage?: Boolean;
@@ -20,6 +22,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const navRef = useRef(null);
   const searchRef = useRef(null);
+  const intl = useIntl();
 
   const headerClass = () => {
     if(window.pageYOffset === 0) {
@@ -52,6 +55,17 @@ const Header = ({ isErrorPage }: HeaderType) => {
   useOnClickOutside(navRef, closeMenu);
   useOnClickOutside(searchRef, closeSearch);
 
+  const [ cookie, setCookie ] = useCookies(['NEXT_LOCALE']);
+  const { locale } = router;
+
+  const switchLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const locale = e.target.value;
+    router.push('/','/', { locale });
+    if(cookie.NEXT_LOCALE !== locale){
+      setCookie("NEXT_LOCALE", locale, { path: "/" });
+    }
+  }
+
   return(
     <header className={`site-header ${!onTop ? 'site-header--fixed' : ''}`}>
       <div className="container">
@@ -60,10 +74,10 @@ const Header = ({ isErrorPage }: HeaderType) => {
         </Link>
         <nav ref={navRef} className={`site-nav ${menuOpen ? 'site-nav--open' : ''}`}>
           <Link href="/products">
-            <a>Products</a>
+            <a><FormattedMessage id="products"></FormattedMessage></a>
           </Link>
-          <a href="#">Women</a>
-          <a href="#">Men</a>
+          <a href="#"><FormattedMessage id="women"></FormattedMessage></a>
+          <a href="#"><FormattedMessage id="men"></FormattedMessage></a>
           <button className="site-nav__btn"><p>Account</p></button>
         </nav>
 
@@ -71,10 +85,19 @@ const Header = ({ isErrorPage }: HeaderType) => {
           <button ref={searchRef} className={`search-form-wrapper ${searchOpen ? 'search-form--active' : ''}`}>
             <form className={`search-form`}>
               <i className="icon-cancel" onClick={() => setSearchOpen(!searchOpen)}></i>
-              <input type="text" name="search" placeholder="Enter the product you are looking for" />
+              <input type="text" name="search" placeholder={intl.formatMessage({id: "search"})} />
             </form>  
             <i onClick={() => setSearchOpen(!searchOpen)}  className="icon-search"></i>
           </button>
+          <div className="select-wrapper">
+            <select
+              onChange={switchLanguage}
+              defaultValue={locale}
+            >
+              <option value="vi">VI</option>
+              <option value="en">EN</option>
+            </select>
+          </div>
           <Link href="/login">
             <button className="site-header__btn-avatar"><i className="icon-avatar"></i></button>
           </Link>

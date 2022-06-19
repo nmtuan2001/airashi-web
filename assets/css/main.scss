@@ -6,7 +6,8 @@ html,body{overflow-x:hidden !important}
 @import './partials/reset.css';
 
 // google fonts
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
 @mixin placeholder {
   &::-webkit-input-placeholder {
@@ -324,6 +325,37 @@ h1,h2,h3,h4,h5 {
       position: relative;
       font-size: 18px;
     }
+    .select-wrapper {
+      position: relative;
+      padding-left: 15px;
+      &:before {
+        right: 12px;
+        font-family: 'icons';
+        display: block;
+        position: absolute;
+        content: '\e801';
+        top: 50%;
+        color: #FFF;
+        font-size: 13px;
+        transform: translateY(-50%);
+      }
+      select {
+        font-size: 15px;
+        padding: 9px 25px 9px 12px;
+        color: #FFF;
+        border: 1px solid #FFF;
+        border-radius: 50px;
+        option {
+          color: #000;
+          font-size: 15px;
+        }
+      }
+      &.select-form {
+        select {
+          width: 100%;
+        }
+      }
+    }    
   }
   .site-nav {
     top: 0;

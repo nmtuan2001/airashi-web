@@ -2,7 +2,7 @@
   font-family: 'icons';
   src: url('./icons.eot?33421751');
   src: url('./icons.eot?33421751#iefix') format('embedded-opentype'),
-       url('./icons.woff2?33421751') format('woff2'),
+       /* url('./icons.woff2?33421751') format('woff2'), */
        url('./icons.woff?33421751') format('woff'),
        url('./icons.ttf?33421751') format('truetype'),
        url('./icons.svg?33421751#icons') format('svg');
@@ -79,3 +79,4 @@
 .icon-linkedin:before { content: '\f0e1'; } /* '' */
 .icon-youtube-play:before { content: '\f16a'; } /* '' */
 .icon-instagram:before { content: '\f16d'; } /* '' */
+.icon-tripadvisor:before { content: '\e901'; }
