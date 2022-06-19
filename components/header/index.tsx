@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useCookies } from 'react-cookie';
 import useOnClickOutside from 'use-onclickoutside';
 import Logo from '../../assets/icons/logo';
 import Link from 'next/link';
@@ -54,6 +55,17 @@ const Header = ({ isErrorPage }: HeaderType) => {
   useOnClickOutside(navRef, closeMenu);
   useOnClickOutside(searchRef, closeSearch);
 
+  const [ cookie, setCookie ] = useCookies(['NEXT_LOCALE']);
+  const { locale } = router;
+
+  const switchLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const locale = e.target.value;
+    router.push('/','/', { locale });
+    if(cookie.NEXT_LOCALE !== locale){
+      setCookie("NEXT_LOCALE", locale, { path: "/" });
+    }
+  }
+
   return(
     <header className={`site-header ${!onTop ? 'site-header--fixed' : ''}`}>
       <div className="container">
@@ -77,6 +89,15 @@ const Header = ({ isErrorPage }: HeaderType) => {
             </form>  
             <i onClick={() => setSearchOpen(!searchOpen)}  className="icon-search"></i>
           </button>
+          <div className="select-wrapper">
+            <select
+              onChange={switchLanguage}
+              defaultValue={locale}
+            >
+              <option value="vi">VI</option>
+              <option value="en">EN</option>
+            </select>
+          </div>
           <Link href="/login">
             <button className="site-header__btn-avatar"><i className="icon-avatar"></i></button>
           </Link>

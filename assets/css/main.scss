@@ -325,6 +325,37 @@ h1,h2,h3,h4,h5 {
       position: relative;
       font-size: 18px;
     }
+    .select-wrapper {
+      position: relative;
+      padding-left: 15px;
+      &:before {
+        right: 15px;
+        font-family: 'icons';
+        display: block;
+        position: absolute;
+        content: '\e801';
+        top: 50%;
+        color: #FFF;
+        font-size: 16px;
+        transform: translateY(-50%);
+      }
+      select {
+        font-size: 15px;
+        padding: 9px 25px 9px 12px;
+        color: #FFF;
+        border: 1px solid #FFF;
+        border-radius: 50px;
+        option {
+          color: #000;
+          font-size: 15px;
+        }
+      }
+      &.select-form {
+        select {
+          width: 100%;
+        }
+      }
+    }    
   }
   .site-nav {
     top: 0;

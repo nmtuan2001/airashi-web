@@ -12,7 +12,7 @@ const Footer = () => {
             <ul className="site-footer__social-networks">
               <li><a href="https://www.facebook.com/airashi.silk/"><i className="icon-facebook"></i></a></li>
               {/* <li><a href="#"><i className="icon-twitter"></i></a></li> */}
-              <li><a href="#"><i className="icon-linkedin"></i></a></li>
+              <li><a href="https://www.tripadvisor.com.sg/Attraction_Review-g293924-d8300938-Reviews-Airashi_Silk-Hanoi.html"><i className="icon-tripadvisor"></i></a></li>
               <li><a href="https://www.instagram.com/airashi_vn/"><i className="icon-instagram"></i></a></li>
               {/* <li><a href="#"><i className="icon-youtube-play"></i></a></li> */}
             </ul>
