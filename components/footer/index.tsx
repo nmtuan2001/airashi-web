@@ -37,8 +37,8 @@ const Footer = () => {
             </ul>
             <ul>
               <li>Contact</li>
-              <li><a href="#">hasilkshop@yahoo.com</a></li>
-              <li><a href="mailto:hasilkshop@yahoo.com">+84 945 452 878</a></li>
+              <li><a href="mailto:hasilkshop@yahoo.com">hasilkshop@yahoo.com</a></li>
+              <li>+84 945 452 878</li>
             </ul>
           </div>
         </div>

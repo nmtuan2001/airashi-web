@@ -1,12 +1,10 @@
+import { applicationDefault } from "firebase-admin/app";
+
 var admin = require('firebase-admin');
 
 if (admin.apps.length === 0) {
   admin.initializeApp({
-    credential: admin.credential.cert({
-      project_id: 'airashi-web',
-      private_key: process.env.PRIVATE_KEY,
-      client_email: process.env.CLIENT_EMAIL,
-    }),
+    credential: applicationDefault(),
     databaseURL: `https://${process.env.DATABASE_NAME}.${process.env.REGION}.firebasedatabase.app`,
   });
 }
