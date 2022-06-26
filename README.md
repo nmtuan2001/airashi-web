@@ -8,6 +8,8 @@ This is the repo for Airashi's online shop. This is based on the original projec
 
 **0.2:** Added internationalization
 
+**1.0:** Set up database for all products with Google Firebase
+
 ## Available pages
 
 - Home page: /
@@ -23,4 +25,4 @@ This is the repo for Airashi's online shop. This is based on the original projec
 
 **0.2.2:** Provide full English - Vietnamese translations
 
-**1.0:** Add database for all products
+**1.1:** Set up backend
