@@ -1,4 +1,4 @@
-import { applicationDefault } from 'firebase-admin/app';
+import { applicationDefault } from "firebase-admin/app";
 
 var admin = require('firebase-admin');
 
