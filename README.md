@@ -10,6 +10,8 @@ This is the repo for Airashi's online shop. This is based on the original projec
 
 **1.0:** Set up database for all products with Google Firebase
 
+**1.1:** Support i18n with database + currency conversion
+
 ## Available pages
 
 - Home page: /
@@ -21,4 +23,4 @@ This is the repo for Airashi's online shop. This is based on the original projec
 - 404 page: /page-not-found
 
 ## Upcoming versions
-**1.1:** Set up backend
+**1.2:** Set up backend
