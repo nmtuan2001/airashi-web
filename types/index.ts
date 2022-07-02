@@ -33,8 +33,18 @@ export type ProductType = {
 
 export type ProductTypeList = {
   id: string;
+  name: string[];
+  price: number;
+  color: string;
+  images: string[];
+  discount?: string;
+  currentPrice?: number;
+}
+
+export type ProductItem = {
+  id: string;
   name: string;
-  price: string;
+  price: number;
   color: string;
   images: string[];
   discount?: string;
