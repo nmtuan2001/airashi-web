@@ -21,8 +21,4 @@ This is the repo for Airashi's online shop. This is based on the original projec
 - 404 page: /page-not-found
 
 ## Upcoming versions
-**0.2.1:** Add button to change language
-
-**0.2.2:** Provide full English - Vietnamese translations
-
 **1.1:** Set up backend
