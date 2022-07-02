@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {EffectFade, Navigation} from 'swiper';
+import { FormattedMessage } from 'react-intl';
 
 SwiperCore.use([EffectFade, Navigation]);
 
@@ -12,8 +13,8 @@ const PageIntro = () => {
           <div className="page-intro__slide" style={{ backgroundImage: "url('/images/slide-1.jpg')" }}>
             <div className="container">
               <div className="page-intro__slide__content">
-                <h2>Sale of the summer collection</h2>
-                <a href="#" className="btn-shop"><i className="icon-right"></i>Shop now</a>
+                <h2><FormattedMessage id="intro_1"></FormattedMessage></h2>
+                <a href="#" className="btn-shop"><i className="icon-right"></i><FormattedMessage id="shop_now"></FormattedMessage></a>
               </div>
             </div>
           </div>
@@ -23,15 +24,15 @@ const PageIntro = () => {
           <div className="page-intro__slide" style={{ backgroundImage: "url('/images/slide-2.jpg')" }}>
             <div className="container">
               <div className="page-intro__slide__content">
-                <h2>Make your house into a home</h2>
-                <a href="#" className="btn-shop"><i className="icon-right"></i>Shop now</a>
+                <h2><FormattedMessage id="intro_2"></FormattedMessage></h2>
+                <a href="#" className="btn-shop"><i className="icon-right"></i><FormattedMessage id="shop_now"></FormattedMessage></a>
               </div>
             </div>
           </div>
         </SwiperSlide>
       </Swiper>
 
-      <div className="shop-data">
+      {/* <div className="shop-data">
         <div className="container">
           <ul className="shop-data__items">
             <li>
@@ -59,7 +60,7 @@ const PageIntro = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </section>
   )
 };

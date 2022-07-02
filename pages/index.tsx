@@ -3,6 +3,7 @@ import PageIntro from '../components/page-intro';
 import ProductsFeatured from '../components/products-featured';
 import Footer from '../components/footer';
 import Subscribe from '../components/subscribe';
+import { FormattedMessage } from 'react-intl';
 
 const IndexPage = () => {
   return (
@@ -13,28 +14,28 @@ const IndexPage = () => {
         <div className="container">
           <article style={{backgroundImage: 'url(/images/featured-1.jpg)'}} className="featured-item featured-item-large">
             <div className="featured-item__content">
-              <h3>New arrivals are now in!</h3>
-              <a href="#" className="btn btn--rounded">Show Collection</a>
+              <h3><FormattedMessage id="arrival"></FormattedMessage></h3>
+              <a href="#" className="btn btn--rounded"><FormattedMessage id="collection"></FormattedMessage></a>
             </div>
           </article>
           
           <article style={{backgroundImage: 'url(/images/featured-2.jpg)'}} className="featured-item featured-item-small-first">
             <div className="featured-item__content">
-              <h3>Basic t-shirts $29,99</h3>
-              <a href="#" className="btn btn--rounded">More details</a>
+              <h3><FormattedMessage id="dresses"></FormattedMessage></h3>
+              <a href="#" className="btn btn--rounded"><FormattedMessage id="details"></FormattedMessage></a>
             </div>
           </article>
           
           <article style={{backgroundImage: 'url(/images/featured-3.jpg)'}} className="featured-item featured-item-small">
             <div className="featured-item__content">
-              <h3>Sale this summer</h3>
-              <a href="#" className="btn btn--rounded">VIEW ALL</a>
+              <h3><FormattedMessage id="sales"></FormattedMessage></h3>
+              <a href="#" className="btn btn--rounded"><FormattedMessage id="view"></FormattedMessage></a>
             </div>
           </article>
         </div>
       </section>
 
-      <section className="section">
+      {/* <section className="section">
         <div className="container">
           <header className="section__intro">
             <h4>Why should you choose us?</h4>
@@ -75,7 +76,7 @@ const IndexPage = () => {
             </li>
           </ul>
         </div>
-      </section>
+      </section> */}
 
       <ProductsFeatured />
       <Subscribe />

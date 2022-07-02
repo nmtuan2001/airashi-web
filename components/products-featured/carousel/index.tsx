@@ -3,6 +3,7 @@ import { ProductTypeList } from 'types';
 
 // import Swiper core and required components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useRouter } from 'next/router';
 
 let slidesPerView = 1.3;
 let centeredSlides = true;
@@ -27,6 +28,8 @@ type ProductsCarouselType = {
 const ProductsCarousel = ({ products }: ProductsCarouselType) => {
   if (!products) return <div>Loading</div>;
 
+  const { locale } = useRouter();
+  
   return (
     <div className="products-carousel">
       <Swiper 
@@ -40,7 +43,7 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
           <SwiperSlide key={item.id}>
             <ProductItem 
               id={item.id} 
-              name={item.name}
+              name={locale === "vi" ? item.name[1] : item.name[0]}
               price={item.price}
               color={item.color}
               discount={item.discount}
