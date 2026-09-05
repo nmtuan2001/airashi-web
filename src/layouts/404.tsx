@@ -8,7 +8,7 @@ type LayoutType = {
   children?: React.ReactNode;
 };
 
-const ErrorPage = ({ children, title = "Next.js Ecommerce" }: LayoutType) => {
+const ErrorPage = ({ children, title = "Airashi Online Shop" }: LayoutType) => {
   const router = useRouter();
   const pathname = router.pathname;
 
