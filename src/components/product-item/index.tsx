@@ -1,5 +1,6 @@
 import { some } from "lodash";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
 import type { RootState } from "@/store";
@@ -16,6 +17,7 @@ const ProductItem = ({
 }: ProductTypeList) => {
   const dispatch = useDispatch();
   const { favProducts } = useSelector((state: RootState) => state.user);
+  const { locale } = useRouter();
 
   const isFavourite = some(favProducts, (productId) => productId === id);
 
@@ -26,6 +28,15 @@ const ProductItem = ({
       }),
     );
   };
+
+  const priceFormatter = (value?: number) => {
+    if (value === undefined) return "";
+    return locale === "vi" ? `${value}₫` : `$${Math.round(value / 23315)}`;
+  };
+
+  const displayName = Array.isArray(name)
+    ? name[locale === "vi" ? 1 : 0]
+    : name;
 
   return (
     <div className="product-item">
@@ -44,13 +55,17 @@ const ProductItem = ({
         </Link>
       </div>
       <div className="product__description">
-        <h3>{name}</h3>
+        <h3>{displayName}</h3>
         <div
           className={`product__price ${discount ? "product__price--discount" : ""}`}
         >
-          <h4>${currentPrice}</h4>
+          <h4>{priceFormatter(currentPrice)}</h4>
 
-          {discount && <span>${price}</span>}
+          {discount && (
+            <span>
+              <del>{priceFormatter(price)}</del>
+            </span>
+          )}
         </div>
       </div>
     </div>

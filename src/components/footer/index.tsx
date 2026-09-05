@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="site-footer__top">
           <div className="site-footer__description">
             <h6>
-              <Logo /> <span>E</span>-Shop
+              <Logo /> <span>Airashi</span>
             </h6>
             <p>
               House My Brand designs clothing for the young, the old & everyone
@@ -21,12 +21,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#">
-                  <i className="icon-twitter" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="icon-linkedin" />
+                  <i className="icon-tripadvisor" />
                 </a>
               </li>
               <li>
@@ -36,7 +31,12 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#">
-                  <i className="icon-youtube-play" />
+                  <i className="icon-facebook" />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="icon-instagram" />
                 </a>
               </li>
             </ul>
@@ -82,11 +82,9 @@ const Footer = () => {
             <ul>
               <li>Contact</li>
               <li>
-                <a href="#">store@uikit.com</a>
+                <a href="mailto:hasilkshop@yahoo.com">hasilkshop@yahoo.com</a>
               </li>
-              <li>
-                <a href="#">Hotline: +1 131 138 138</a>
-              </li>
+              <li>+84 945 452 878</li>
             </ul>
           </div>
         </div>

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import type { ChangeEvent } from "react";
 import { useEffect, useRef, useState } from "react";
+import { useCookies } from "react-cookie";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useSelector } from "react-redux";
 import useOnClickOutside from "use-onclickoutside";
 
@@ -12,18 +15,22 @@ type HeaderType = {
   isErrorPage?: boolean;
 };
 
+const HEADER_TRANSPARENT_PATHS = ["/"];
+
 const Header = ({ isErrorPage }: HeaderType) => {
   const router = useRouter();
   const { cartItems } = useSelector((state: RootState) => state.cart);
-  const arrayPaths = ["/"];
 
   const [onTop, setOnTop] = useState(
-    !(!arrayPaths.includes(router.pathname) || isErrorPage),
+    !(!HEADER_TRANSPARENT_PATHS.includes(router.pathname) || isErrorPage),
   );
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const navRef = useRef(null);
   const searchRef = useRef(null);
+  const intl = useIntl();
+  const [cookie, setCookie] = useCookies(["NEXT_LOCALE"]);
+  const { locale } = router;
 
   const headerClass = () => {
     if (window.pageYOffset === 0) {
@@ -34,7 +41,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
   };
 
   useEffect(() => {
-    if (!arrayPaths.includes(router.pathname) || isErrorPage) {
+    if (!HEADER_TRANSPARENT_PATHS.includes(router.pathname) || isErrorPage) {
       return;
     }
 
@@ -42,7 +49,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
     window.onscroll = function () {
       headerClass();
     };
-  }, []);
+  }, [isErrorPage, router.pathname]);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -56,22 +63,36 @@ const Header = ({ isErrorPage }: HeaderType) => {
   useOnClickOutside(navRef, closeMenu);
   useOnClickOutside(searchRef, closeSearch);
 
+  const switchLanguage = (event: ChangeEvent<HTMLSelectElement>) => {
+    const nextLocale = event.target.value;
+    router.push(router.asPath, router.asPath, { locale: nextLocale });
+    if (cookie.NEXT_LOCALE !== nextLocale) {
+      setCookie("NEXT_LOCALE", nextLocale, { path: "/" });
+    }
+  };
+
   return (
     <header className={`site-header ${!onTop ? "site-header--fixed" : ""}`}>
       <div className="container">
         <Link href="/">
           <h1 className="site-logo">
             <Logo />
-            E-Shop
+            Airashi Silk
           </h1>
         </Link>
         <nav
           ref={navRef}
           className={`site-nav ${menuOpen ? "site-nav--open" : ""}`}
         >
-          <Link href="/products">Products</Link>
-          <a href="#">Inspiration</a>
-          <a href="#">Rooms</a>
+          <Link href="/products">
+            <FormattedMessage id="products" />
+          </Link>
+          <a href="#">
+            <FormattedMessage id="women" />
+          </a>
+          <a href="#">
+            <FormattedMessage id="men" />
+          </a>
           <button className="site-nav__btn">
             <p>Account</p>
           </button>
@@ -90,7 +111,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
               <input
                 type="text"
                 name="search"
-                placeholder="Enter the product you are looking for"
+                placeholder={intl.formatMessage({ id: "search" })}
               />
             </form>
             <i
@@ -98,6 +119,12 @@ const Header = ({ isErrorPage }: HeaderType) => {
               className="icon-search"
             />
           </button>
+          <div className="select-wrapper">
+            <select onChange={switchLanguage} defaultValue={locale}>
+              <option value="vi">VI</option>
+              <option value="en">EN</option>
+            </select>
+          </div>
           <Link href="/cart" legacyBehavior>
             <button className="btn-cart">
               <i className="icon-cart" />

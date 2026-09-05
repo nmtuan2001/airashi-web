@@ -1,3 +1,5 @@
+import { FormattedMessage } from "react-intl";
+
 import Footer from "@/components/footer";
 import PageIntro from "@/components/page-intro";
 import ProductsFeatured from "@/components/products-featured";
@@ -17,9 +19,11 @@ const IndexPage = () => {
             className="featured-item featured-item-large"
           >
             <div className="featured-item__content">
-              <h3>New arrivals are now in!</h3>
+              <h3>
+                <FormattedMessage id="arrival" />
+              </h3>
               <a href="#" className="btn btn--rounded">
-                Show Collection
+                <FormattedMessage id="collection" />
               </a>
             </div>
           </article>
@@ -29,9 +33,11 @@ const IndexPage = () => {
             className="featured-item featured-item-small-first"
           >
             <div className="featured-item__content">
-              <h3>Basic t-shirts $29,99</h3>
+              <h3>
+                <FormattedMessage id="dresses" />
+              </h3>
               <a href="#" className="btn btn--rounded">
-                More details
+                <FormattedMessage id="details" />
               </a>
             </div>
           </article>
@@ -41,9 +47,11 @@ const IndexPage = () => {
             className="featured-item featured-item-small"
           >
             <div className="featured-item__content">
-              <h3>Sale this summer</h3>
+              <h3>
+                <FormattedMessage id="sales" />
+              </h3>
               <a href="#" className="btn btn--rounded">
-                VIEW ALL
+                <FormattedMessage id="view" />
               </a>
             </div>
           </article>

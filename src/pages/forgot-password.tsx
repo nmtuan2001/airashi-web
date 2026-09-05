@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { FormattedMessage } from "react-intl";
 
 import Layout from "../layouts/Main";
 import { server } from "../utils/server";
@@ -25,14 +26,16 @@ const ForgotPassword = () => {
           <div className="back-button-section">
             <Link href="/products">
               <i className="icon-left" />
-              Back to shop
+              <FormattedMessage id="return" />
             </Link>
           </div>
 
           <div className="form-block">
-            <h2 className="form-block__title">Forgot your password?</h2>
+            <h2 className="form-block__title">
+              <FormattedMessage id="forgot_password" />
+            </h2>
             <p className="form-block__description">
-              Enter your email or phone number and recover your account
+              <FormattedMessage id="recover" />
             </p>
 
             <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -51,13 +54,13 @@ const ForgotPassword = () => {
 
                 {errors.email && errors.email.type === "required" && (
                   <p className="message message--error">
-                    This field is required
+                    <FormattedMessage id="required" />
                   </p>
                 )}
 
                 {errors.email && errors.email.type === "pattern" && (
                   <p className="message message--error">
-                    Please write a valid email
+                    <FormattedMessage id="invalid_email" />
                   </p>
                 )}
               </div>
@@ -72,7 +75,7 @@ const ForgotPassword = () => {
                 />
                 {errors.password && errors.password.type === "required" && (
                   <p className="message message--error">
-                    This field is required
+                    <FormattedMessage id="required" />
                   </p>
                 )}
               </div>
@@ -81,7 +84,7 @@ const ForgotPassword = () => {
                 type="submit"
                 className="btn btn--rounded btn--yellow btn-submit"
               >
-                Reset password
+                <FormattedMessage id="reset_password" />
               </button>
             </form>
           </div>

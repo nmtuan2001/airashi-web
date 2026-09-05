@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FormattedMessage } from "react-intl";
 import useSwr from "swr";
 
 import ProductsCarousel from "./carousel";
@@ -11,9 +12,11 @@ const ProductsFeatured = () => {
     <section className="section section-products-featured">
       <div className="container">
         <header className="section-products-featured__header">
-          <h3>Selected just for you</h3>
+          <h3>
+            <FormattedMessage id="featured" />
+          </h3>
           <Link href="/products" className="btn btn--rounded btn--border">
-            Show All
+            <FormattedMessage id="view" />
           </Link>
         </header>
 

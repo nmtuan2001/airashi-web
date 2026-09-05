@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useSelector } from "react-redux";
 
 import type { RootState } from "@/store";
@@ -8,6 +9,7 @@ import Item from "./item";
 
 const ShoppingCart = () => {
   const { cartItems } = useSelector((state: RootState) => state.cart);
+  const intl = useIntl();
 
   const priceTotal = () => {
     let totalPrice = 0;
@@ -22,7 +24,9 @@ const ShoppingCart = () => {
     <section className="cart">
       <div className="container">
         <div className="cart__intro">
-          <h3 className="cart__title">Shopping Cart</h3>
+          <h3 className="cart__title">
+            <FormattedMessage id="cart" />
+          </h3>
           <CheckoutStatus step="cart" />
         </div>
 
@@ -31,11 +35,21 @@ const ShoppingCart = () => {
             <table>
               <tbody>
                 <tr>
-                  <th style={{ textAlign: "left" }}>Product</th>
-                  <th>Color</th>
-                  <th>Size</th>
-                  <th>Ammount</th>
-                  <th>Price</th>
+                  <th style={{ textAlign: "left" }}>
+                    <FormattedMessage id="products" />
+                  </th>
+                  <th>
+                    <FormattedMessage id="color" />
+                  </th>
+                  <th>
+                    <FormattedMessage id="size" />
+                  </th>
+                  <th>
+                    <FormattedMessage id="amount" />
+                  </th>
+                  <th>
+                    <FormattedMessage id="price" />
+                  </th>
                   <th />
                 </tr>
 
@@ -55,28 +69,33 @@ const ShoppingCart = () => {
             </table>
           )}
 
-          {cartItems.length === 0 && <p>Nothing in the cart</p>}
+          {cartItems.length === 0 && (
+            <p>
+              <FormattedMessage id="no_item" />
+            </p>
+          )}
         </div>
 
         <div className="cart-actions">
           <Link href="/products" className="cart__btn-back">
-            <i className="icon-left" /> Continue Shopping
+            <i className="icon-left" /> <FormattedMessage id="continue" />
           </Link>
           <input
             type="text"
-            placeholder="Promo Code"
+            placeholder={intl.formatMessage({ id: "promo" })}
             className="cart__promo-code"
           />
 
           <div className="cart-actions__items-wrapper">
             <p className="cart-actions__total">
-              Total cost <strong>${priceTotal().toFixed(2)}</strong>
+              <FormattedMessage id="total" />{" "}
+              <strong>${priceTotal().toFixed(2)}</strong>
             </p>
             <Link
               href="/cart/checkout"
               className="btn btn--rounded btn--yellow"
             >
-              Checkout
+              <FormattedMessage id="checkout" />
             </Link>
           </div>
         </div>

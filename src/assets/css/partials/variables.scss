@@ -1,4 +1,7 @@
 :root {
+  // fonts
+  --font-title: 'Archivo';
+
   // colors
   --color-orange: #FBB03B;
   --color-orange-light: #FFF3DF;
@@ -7,6 +10,8 @@
   --color-white: #FFFFFF;
   --color-gray: #706c61;
   --color-red: #FF0000;
+  --color-brown: #400000;
+  --color-brown-light: #663232;
 }
 
 @mixin inputPlaceholder() {
