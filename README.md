@@ -1,16 +1,20 @@
-# Introduction
+# Airashi Online Shop
 
-This is the repo for Airashi's online shop. This is based on the original project at https://github.com/lucaspulliese/next-ecommerce, made with Next.js, Redux, Redux-persist, Hooks, SCSS and BEM. Changes to the design and extra features are added to better fit Airashi's design and purpose.
+This is Airashi's online shop, based on the original Next.js Ecommerce project.
+It uses Next.js, Redux, Redux Persist, React Intl, Firebase, Hooks, SCSS and BEM.
+
+## Getting started
+
+It's easy to have it running locally.
+Just do a `yarn install` to install the dependencies.
+Then do a `yarn dev` to run it locally.
 
 ## Versions
 
-**0.1:** Added Airashi designs and products
-
-**0.2:** Added internationalization
-
-**1.0:** Set up database for all products with Google Firebase
-
-**1.1:** Support i18n with database + currency conversion
+- **0.1:** Added Airashi designs and products
+- **0.2:** Added internationalization
+- **1.0:** Set up the Firebase product database
+- **1.1:** Added database-backed i18n and currency conversion
 
 ## Available pages
 
@@ -22,5 +26,17 @@ This is the repo for Airashi's online shop. This is based on the original projec
 - Register page: /register
 - 404 page: /page-not-found
 
-## Upcoming versions
-**1.2:** Set up backend
+## Backend
+
+The product API uses Firebase when configured. Local product data is kept in
+`src/utils/data` for product detail pages and development.
+
+## Development
+
+```sh
+yarn install
+yarn dev
+```
+
+Set `PROJECT_ID`, `PRIVATE_KEY`, `CLIENT_EMAIL`, `DATABASE_NAME`, and `REGION`
+to enable the Firebase API route.
