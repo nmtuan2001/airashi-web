@@ -3,6 +3,15 @@
 This is Airashi's online shop, based on the original Next.js Ecommerce project.
 It uses Next.js, Redux, Redux Persist, React Intl, Firebase, Hooks, SCSS and BEM.
 
+## Attribution and licensing
+
+This repository is a derivative work of [Next.js Ecommerce](https://github.com/lucaspulliese/next-ecommerce)
+by Lucas Pulliese. The original MIT license and copyright notice are preserved
+in `LICENSE`, and the original Git history remains available for attribution.
+Nguyen Minh Tuan is the principal developer of the Airashi-specific work,
+including its substantial redesign, new features, Firebase backend integration,
+internationalization, and ongoing development.
+
 ## Getting started
 
 It's easy to have it running locally.
